@@ -1,0 +1,22 @@
+# VQC/VQN architecture scorecard - A5 feature-extraction environment
+#
+# The frozen pre-trained encoder of A5 (Mari et al. 2020, the network A') runs
+# once, offline, in its own environment. The pinned scorecard environment never
+# imports torch or transformers; it only reads the .npz cache this one writes.
+# Versions are not pinned: the cache records the versions it was built with and
+# the SHA-256 of the model weights, which is what a reader needs.
+#
+#   py -3.11 -m venv .venv-extract
+#   .venv-extract\Scripts\activate
+#   pip install -r vqc_scorecard/requirements-extract.txt
+#   python -m vqc_scorecard.tasks.get_features --task imdb1k
+#   python -m vqc_scorecard.tasks.get_features --task cola
+#
+# Tested with torch 2.14, transformers 5.17, numpy 2.4.4 (Python 3.11).
+# The model itself (models/all-MiniLM-L6-v2) is downloaded once; see
+# RUN_COMMANDS.md for the exact file list, config.json included.
+
+numpy>=2.0
+torch>=2.1
+transformers>=4.40
+huggingface_hub>=0.23

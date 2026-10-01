@@ -1,0 +1,1058 @@
+[
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 1,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00306091,
+        "gradvar_std": 0.00011345,
+        "gradvar_seeds": [
+          0.00298068,
+          0.00314113
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.0016367,
+        "gradvar_std": 0.0004666,
+        "gradvar_seeds": [
+          0.00196664,
+          0.00130676
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.00043899,
+        "gradvar_std": 0.00016054,
+        "gradvar_seeds": [
+          0.00055251,
+          0.00032547
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 2,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00339602,
+        "gradvar_std": 0.00039552,
+        "gradvar_seeds": [
+          0.00311634,
+          0.00367569
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00089619,
+        "gradvar_std": 3.99e-05,
+        "gradvar_seeds": [
+          0.00086797,
+          0.00092441
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 8.759e-05,
+        "gradvar_std": 1.93e-06,
+        "gradvar_seeds": [
+          8.895e-05,
+          8.622e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 3,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00183348,
+        "gradvar_std": 5.399e-05,
+        "gradvar_seeds": [
+          0.0017953,
+          0.00187166
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00033184,
+        "gradvar_std": 2.791e-05,
+        "gradvar_seeds": [
+          0.0003121,
+          0.00035157
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1.506e-05,
+        "gradvar_std": 6e-07,
+        "gradvar_seeds": [
+          1.548e-05,
+          1.463e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 4,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00107386,
+        "gradvar_std": 4.924e-05,
+        "gradvar_seeds": [
+          0.00103904,
+          0.00110868
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 9.226e-05,
+        "gradvar_std": 1.279e-05,
+        "gradvar_seeds": [
+          0.0001013,
+          8.321e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 2.42e-06,
+        "gradvar_std": 2.6e-07,
+        "gradvar_seeds": [
+          2.6e-06,
+          2.23e-06
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 5,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.0005283,
+        "gradvar_std": 6.142e-05,
+        "gradvar_seeds": [
+          0.00048487,
+          0.00057173
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 3.662e-05,
+        "gradvar_std": 4.21e-06,
+        "gradvar_seeds": [
+          3.96e-05,
+          3.365e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 4e-07,
+        "gradvar_std": 1.4e-07,
+        "gradvar_seeds": [
+          5e-07,
+          3e-07
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 6,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00027209,
+        "gradvar_std": 1.939e-05,
+        "gradvar_seeds": [
+          0.00028581,
+          0.00025838
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 1.163e-05,
+        "gradvar_std": 9.5e-07,
+        "gradvar_seeds": [
+          1.095e-05,
+          1.23e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1.2e-07,
+        "gradvar_std": 2e-08,
+        "gradvar_seeds": [
+          1.3e-07,
+          1e-07
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 7,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00014807,
+        "gradvar_std": 1.21e-06,
+        "gradvar_seeds": [
+          0.00014722,
+          0.00014893
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 4.7e-06,
+        "gradvar_std": 4.7e-07,
+        "gradvar_seeds": [
+          5.03e-06,
+          4.37e-06
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 3e-08,
+        "gradvar_std": 1e-08,
+        "gradvar_seeds": [
+          2e-08,
+          3e-08
+        ]
+      }
+    }
+  },
+  {
+    "family": "A1",
+    "n": 4,
+    "d": 8,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 9.919e-05,
+        "gradvar_std": 2.252e-05,
+        "gradvar_seeds": [
+          8.327e-05,
+          0.00011511
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 2.21e-06,
+        "gradvar_std": 5.6e-07,
+        "gradvar_seeds": [
+          1.82e-06,
+          2.61e-06
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.0,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 1,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00769514,
+        "gradvar_std": 0.00106422,
+        "gradvar_seeds": [
+          0.00844765,
+          0.00694263
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00443683,
+        "gradvar_std": 0.00153314,
+        "gradvar_seeds": [
+          0.00335274,
+          0.00552093
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.00201163,
+        "gradvar_std": 0.00104328,
+        "gradvar_seeds": [
+          0.00127392,
+          0.00274934
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 2,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00172337,
+        "gradvar_std": 0.00027138,
+        "gradvar_seeds": [
+          0.00153148,
+          0.00191527
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00056246,
+        "gradvar_std": 0.00013463,
+        "gradvar_seeds": [
+          0.00065766,
+          0.00046726
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.00010505,
+        "gradvar_std": 8.43e-06,
+        "gradvar_seeds": [
+          0.00011101,
+          9.909e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 3,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00101797,
+        "gradvar_std": 8.578e-05,
+        "gradvar_seeds": [
+          0.00095731,
+          0.00107863
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00036338,
+        "gradvar_std": 0.00010193,
+        "gradvar_seeds": [
+          0.00043545,
+          0.0002913
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 2.823e-05,
+        "gradvar_std": 6.79e-06,
+        "gradvar_seeds": [
+          2.343e-05,
+          3.302e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 4,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.0008707,
+        "gradvar_std": 0.0001147,
+        "gradvar_seeds": [
+          0.0009518,
+          0.00078959
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00010614,
+        "gradvar_std": 4.13e-06,
+        "gradvar_seeds": [
+          0.00010906,
+          0.00010322
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 2.67e-06,
+        "gradvar_std": 4.3e-07,
+        "gradvar_seeds": [
+          2.37e-06,
+          2.98e-06
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 5,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00059957,
+        "gradvar_std": 5.361e-05,
+        "gradvar_seeds": [
+          0.00056167,
+          0.00063748
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 5e-05,
+        "gradvar_std": 3.77e-06,
+        "gradvar_seeds": [
+          5.267e-05,
+          4.734e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 4.3e-07,
+        "gradvar_std": 2e-08,
+        "gradvar_seeds": [
+          4.5e-07,
+          4.2e-07
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 6,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.0003222,
+        "gradvar_std": 3.2e-06,
+        "gradvar_seeds": [
+          0.00031993,
+          0.00032446
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 2.094e-05,
+        "gradvar_std": 3.9e-07,
+        "gradvar_seeds": [
+          2.066e-05,
+          2.122e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1.6e-07,
+        "gradvar_std": 1e-08,
+        "gradvar_seeds": [
+          1.7e-07,
+          1.5e-07
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 7,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00013147,
+        "gradvar_std": 5.26e-06,
+        "gradvar_seeds": [
+          0.00013519,
+          0.00012774
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 2.96e-06,
+        "gradvar_std": 4.6e-07,
+        "gradvar_seeds": [
+          2.64e-06,
+          3.28e-06
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.0,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          0.0,
+          1e-08
+        ]
+      }
+    }
+  },
+  {
+    "family": "A2",
+    "n": 4,
+    "d": 8,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 6.682e-05,
+        "gradvar_std": 5.78e-06,
+        "gradvar_seeds": [
+          7.091e-05,
+          6.273e-05
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 8.1e-07,
+        "gradvar_std": 1.4e-07,
+        "gradvar_seeds": [
+          9.1e-07,
+          7.1e-07
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.0,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 1,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00233324,
+        "gradvar_std": 0.00018887,
+        "gradvar_seeds": [
+          0.00219969,
+          0.00246679
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00135826,
+        "gradvar_std": 0.0005567,
+        "gradvar_seeds": [
+          0.0017519,
+          0.00096462
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.00041652,
+        "gradvar_std": 0.00022056,
+        "gradvar_seeds": [
+          0.00026056,
+          0.00057247
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 2,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00317332,
+        "gradvar_std": 0.00037745,
+        "gradvar_seeds": [
+          0.00344022,
+          0.00290642
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00095587,
+        "gradvar_std": 0.00013663,
+        "gradvar_seeds": [
+          0.00085926,
+          0.00105249
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 7.758e-05,
+        "gradvar_std": 2.398e-05,
+        "gradvar_seeds": [
+          6.062e-05,
+          9.454e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 3,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00093553,
+        "gradvar_std": 0.00013992,
+        "gradvar_seeds": [
+          0.0008366,
+          0.00103447
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00015019,
+        "gradvar_std": 3.607e-05,
+        "gradvar_seeds": [
+          0.00012469,
+          0.0001757
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 6.12e-06,
+        "gradvar_std": 1.39e-06,
+        "gradvar_seeds": [
+          7.1e-06,
+          5.14e-06
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 4,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00052397,
+        "gradvar_std": 1.561e-05,
+        "gradvar_seeds": [
+          0.00051293,
+          0.000535
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 3.93e-05,
+        "gradvar_std": 9.69e-06,
+        "gradvar_seeds": [
+          3.245e-05,
+          4.615e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 3.3e-07,
+        "gradvar_std": 1e-07,
+        "gradvar_seeds": [
+          4e-07,
+          2.7e-07
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 5,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00019667,
+        "gradvar_std": 2.035e-05,
+        "gradvar_seeds": [
+          0.00018228,
+          0.00021106
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 8.9e-06,
+        "gradvar_std": 4.8e-07,
+        "gradvar_seeds": [
+          9.24e-06,
+          8.56e-06
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 5e-08,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          5e-08,
+          5e-08
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 6,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00013796,
+        "gradvar_std": 2.935e-05,
+        "gradvar_seeds": [
+          0.00015871,
+          0.00011721
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 3.73e-06,
+        "gradvar_std": 3.1e-07,
+        "gradvar_seeds": [
+          3.95e-06,
+          3.51e-06
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1e-08,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          1e-08,
+          0.0
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 7,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 4.418e-05,
+        "gradvar_std": 1.352e-05,
+        "gradvar_seeds": [
+          5.375e-05,
+          3.462e-05
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 4.3e-07,
+        "gradvar_std": 9e-08,
+        "gradvar_seeds": [
+          4.9e-07,
+          3.7e-07
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.0,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  {
+    "family": "A3",
+    "n": 4,
+    "d": 8,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 2.186e-05,
+        "gradvar_std": 3.29e-06,
+        "gradvar_seeds": [
+          2.419e-05,
+          1.954e-05
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 1.4e-07,
+        "gradvar_std": 2e-08,
+        "gradvar_seeds": [
+          1.6e-07,
+          1.2e-07
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.0,
+        "gradvar_std": 0.0,
+        "gradvar_seeds": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 1,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00089079,
+        "gradvar_std": 0.00039644,
+        "gradvar_seeds": [
+          0.00117112,
+          0.00061046
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00042561,
+        "gradvar_std": 0.00015914,
+        "gradvar_seeds": [
+          0.00053814,
+          0.00031308
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 4.69e-05,
+        "gradvar_std": 7.18e-06,
+        "gradvar_seeds": [
+          5.197e-05,
+          4.182e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 2,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.0028347,
+        "gradvar_std": 0.00085949,
+        "gradvar_seeds": [
+          0.00344245,
+          0.00222695
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00086091,
+        "gradvar_std": 7.819e-05,
+        "gradvar_seeds": [
+          0.0009162,
+          0.00080562
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 0.00011229,
+        "gradvar_std": 1.203e-05,
+        "gradvar_seeds": [
+          0.00012079,
+          0.00010378
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 3,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.0022086,
+        "gradvar_std": 7.978e-05,
+        "gradvar_seeds": [
+          0.00226501,
+          0.00215219
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00050795,
+        "gradvar_std": 4.127e-05,
+        "gradvar_seeds": [
+          0.00047877,
+          0.00053713
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 3.034e-05,
+        "gradvar_std": 2.9e-06,
+        "gradvar_seeds": [
+          3.239e-05,
+          2.829e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 4,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00177417,
+        "gradvar_std": 0.00036211,
+        "gradvar_seeds": [
+          0.00151812,
+          0.00203022
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00029575,
+        "gradvar_std": 2.371e-05,
+        "gradvar_seeds": [
+          0.00027898,
+          0.00031251
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1.156e-05,
+        "gradvar_std": 1e-08,
+        "gradvar_seeds": [
+          1.156e-05,
+          1.157e-05
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 5,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.0011507,
+        "gradvar_std": 0.00011032,
+        "gradvar_seeds": [
+          0.00122871,
+          0.00107269
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 0.00015038,
+        "gradvar_std": 6.61e-06,
+        "gradvar_seeds": [
+          0.00015505,
+          0.00014571
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 3.87e-06,
+        "gradvar_std": 5e-08,
+        "gradvar_seeds": [
+          3.83e-06,
+          3.91e-06
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 6,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00080177,
+        "gradvar_std": 3.989e-05,
+        "gradvar_seeds": [
+          0.00077357,
+          0.00082998
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 9.592e-05,
+        "gradvar_std": 9.71e-06,
+        "gradvar_seeds": [
+          8.905e-05,
+          0.00010278
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1.35e-06,
+        "gradvar_std": 6e-08,
+        "gradvar_seeds": [
+          1.3e-06,
+          1.39e-06
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 7,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00062007,
+        "gradvar_std": 4.551e-05,
+        "gradvar_seeds": [
+          0.00058789,
+          0.00065226
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 4.553e-05,
+        "gradvar_std": 6.28e-06,
+        "gradvar_seeds": [
+          4.11e-05,
+          4.997e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 4.6e-07,
+        "gradvar_std": 4e-08,
+        "gradvar_seeds": [
+          4.3e-07,
+          4.8e-07
+        ]
+      }
+    }
+  },
+  {
+    "family": "A4",
+    "n": 4,
+    "d": 8,
+    "samples": 50,
+    "repeats": 2,
+    "levels": {
+      "0.017783": {
+        "gradvar_mean": 0.00040764,
+        "gradvar_std": 0.00011628,
+        "gradvar_seeds": [
+          0.00048986,
+          0.00032542
+        ]
+      },
+      "0.031623": {
+        "gradvar_mean": 1.924e-05,
+        "gradvar_std": 8.5e-07,
+        "gradvar_seeds": [
+          1.864e-05,
+          1.985e-05
+        ]
+      },
+      "0.056234": {
+        "gradvar_mean": 1.9e-07,
+        "gradvar_std": 1e-08,
+        "gradvar_seeds": [
+          1.8e-07,
+          2e-07
+        ]
+      }
+    }
+  }
+]

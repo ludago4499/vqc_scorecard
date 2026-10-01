@@ -1,0 +1,23 @@
+# VQC/VQN architecture scorecard — Python dependencies
+#
+# Versions are pinned to the environment recorded in results/scorecard.json,
+# so `pip install -r requirements.txt` reproduces the numbers in the deck.
+# Tested on Python 3.11.
+#
+#   pip install -r requirements.txt
+#   # inside an externally-managed environment, add: --break-system-packages
+#
+# Then, from the folder that contains vqc_scorecard/:
+#   python -m vqc_scorecard.cli --metrics P1 P2      # run the sweep
+#   python -m vqc_scorecard.tests                    # every check suite
+#   python -m vqc_scorecard.figures.make_diagrams    # circuit diagrams
+
+# --- core: required to run the sweep, the tests and the CLI ---
+pennylane==0.42.3
+numpy==2.4.4
+
+# --- figures only: circuit diagrams (vqc_scorecard/figures/) ---
+matplotlib>=3.7
+
+# --- A5 frozen-encoder extraction: a SEPARATE environment, see
+#     requirements-extract.txt. Nothing here imports torch or transformers.
