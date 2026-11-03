@@ -13,6 +13,10 @@
 #               transfer-learning head of Mari et al. 2020), which carried
 #               trainable classical layers and so broke the pure-v1 rule that
 #               the circuit is the only trainable component.
+#   2026-10-08  Documentation only (no gate, order or count changed). Declared
+#               the controlled-gate layout against the paper's Eq. (9) rule
+#               (orientation, order, and the extra gates at n = 6), and the
+#               readout and loss. See docs/IMPLEMENTATION.md, section A5.
 
 """A5 - Circuit-centric quantum classifier (amplitude encoding).
 
@@ -42,6 +46,22 @@ Circuit
    and adds a trainable bias, which is the task head's ``b``).
 
 Angle count: ``p = 6 n d + 3``.
+
+Controlled-gate layout against the paper
+----------------------------------------
+The paper's block (Sec. III A) holds ``n / gcd(n, r)`` controlled gates; gate
+``j = 1 .. n / gcd(n, r)`` has control ``c_j = j r mod n`` and target
+``t_j = (j - 1) r mod n``. This module places ``n`` gates, control ``q`` and
+target ``(q + r) mod n``, in the order ``q = 0 .. n - 1``. Consequences:
+
+* When ``gcd(n, r) = 1`` (``n = 4, 8`` with ``r = 1, 3``) the unordered pairs
+  and the gate count are the paper's, but the orientation is reversed (target
+  ahead of control by ``r`` here, behind it in the paper) and, for ``r = 3``,
+  the order differs.
+* At ``n = 6``, ``r = 3`` the paper's rule gives 2 gates, ``3 -> 0`` and
+  ``0 -> 3``. This module places 6, every pair ``{q, q + 3}`` twice in both
+  directions. The angle count is therefore above the paper's rule at ``n = 6``
+  and ``d >= 2``: 111 against 99 at ``d = 3``, 183 against 159 at ``d = 5``.
 
 Cost of the encoding
 --------------------
@@ -181,5 +201,13 @@ A5 = Ansatz(
         "without padding (task side: standardised PCA(2^n) scores).",
         "The descriptor sweep holds x fixed (package convention), so P1 to P4 "
         "describe the ansatz at one encoded state.",
+        "Controlled gates: n per block, control q, target (q + r) mod n. The "
+        "paper places n / gcd(n, r) per block, control j r mod n, target "
+        "(j - 1) r mod n. Same pairs and count when gcd(n, r) = 1, reversed "
+        "orientation; at n = 6, r = 3 this module has 6 gates where the paper "
+        "has 2 (p = 111 vs 99 at d = 3, 183 vs 159 at d = 5).",
+        "Readout and loss: the paper uses pi = p(q_0 = 1) + b with a least-"
+        "squares cost and single-sample SGD; the task head is "
+        "sigmoid(a <Z_0> + b) with a class-balanced BCE and Adam.",
     ),
 )

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "vqc_scorecard: descriptor battery and pure-v1 task benchmark for variational quantum circuits"
+version: 3.0.0
+date-released: 2026-10-30
+license: MIT
+authors:
+  - family-names: "González Alcocer"
+    given-names: "Luis Daniel"
+    affiliation: "Tecnológico de Monterrey"
+    email: "a01286903@tec.mx"
+repository-code: "https://github.com/ludago4499/vqc_scorecard"
+keywords:
+  - variational quantum circuits
+  - quantum machine learning
+  - barren plateaus
+  - benchmark
+  - NLP

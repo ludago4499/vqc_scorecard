@@ -1,3 +1,16 @@
+# This code is part of the VQC/VQN architecture scorecard.
+#
+# (C) Copyright L. D. Gonzalez Alcocer, Tecnologico de Monterrey, 2026.
+#
+# Any modification of this file must keep this notice, and must record the
+# change in the module history below.
+#
+# History:
+#   2026-08-11  Moved from the p1_expressibility package, unchanged.
+#   2026-10-08  Documentation only (no gate, order or count changed). Paper-to-
+#               code map, task-path note and the full deviations list, for
+#               reproduction. See docs/IMPLEMENTATION.md, section A1.
+
 """A1 - Hardware-efficient ansatz (HEA).
 
 Source: A. Kandala et al., *Nature* **549**, 242 (2017), Eq. (2).
@@ -8,7 +21,23 @@ Circuit:
    Euler triple is dropped, because ``|0>`` is already a ``Z`` eigenstate.
 2. Then ``d`` repeats of: a CNOT chain, then a full Euler ``RZ-RX-RZ`` layer.
 
-Angle count: ``p = n * (3d + 2)``.
+Angle count: ``p = n * (3d + 2)``, the count Kandala et al. state with Eq. (2).
+
+Paper-to-code map
+-----------------
+* Euler rotation ``U^{q,i} = Z_{theta1} X_{theta2} Z_{theta3}`` (operator
+  order): in time order the code queues ``RZ, RX, RZ``.
+* Layer 0 drops the first-in-time ``Z`` because ``|0>`` is a ``Z``
+  eigenstate, as the paper does; so it queues ``RX, RZ`` (2 angles per qubit).
+* ``U_ENT``: the paper uses the device drift ``exp(-i H_0 tau)`` (cross-resonance
+  gates); the code uses a fixed nearest-neighbour CNOT chain ``(q, q+1)``.
+
+Task path (pure-v1)
+-------------------
+Kandala's ansatz is a VQE trial state and takes no data. In the task model
+(:mod:`vqc_scorecard.tasks.model`, encoding ``"angle"``) one ``RY(x_q)`` per
+qubit is queued first, then this ``apply`` with ``x=None``. The readout is
+``<Z_0>`` through ``sigmoid(a <Z_0> + b)``, not an energy.
 
 This file is a copy of the circuit in ``kandala_hea.py``. It is copied on
 purpose, so that this package has no import from the old scorecard folder and
@@ -83,5 +112,13 @@ A1 = Ansatz(
     deviations=(
         "Entangler is a linear CNOT chain. The paper uses hardware-native "
         "cross-resonance gates.",
+        "Task path: the paper's ansatz takes no data (VQE). The task model "
+        "prepends one RY(x_q) per qubit (encoding 'angle'); the descriptor "
+        "sweep runs the bare ansatz from |0>.",
+        "Readout is <Z_0> (task head sigmoid(a <Z_0> + b)), not a Hamiltonian "
+        "energy.",
+        "Rotation signs follow PennyLane (RX(t) = exp(-i t X / 2)); the paper's "
+        "Z_theta, X_theta convention can differ by the sign of theta, which "
+        "changes nothing under uniform sampling or training.",
     ),
 )

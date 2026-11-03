@@ -9,6 +9,8 @@
 #               agreement, zero-noise identity, gradients), the harness split,
 #               the runner, and the frozen decision rules and categories of
 #               the report on planted data.
+#   2026-10-08  Docstring only: the A7 check builds the package's model
+#               (readout |1>), not the paper's (readout |0>).
 
 """Checks with known answers for pure-v1.
 
@@ -112,7 +114,10 @@ def test_a6_feature_map_matches_havlicek() -> None:
 
 def test_a7_layer_and_readout_match_farhi_neven() -> None:
     """A7 at n = 3, d = 1: <Z_0> of the circuit equals <Y_readout> of
-    exp(i t Sigma) ... RY(x)|0>|1>, the paper's model, built with expm."""
+    exp(i t Sigma) ... RY(x)|0>|1>, the package's model, built with expm.
+
+    The readout here is |1>, as in the package. The paper's readout is |0>; the
+    sign relation between the two is checked in test_conventions."""
     from scipy.linalg import expm
     n, d = 3, 1
     rng = generator("test-pure", "a7")

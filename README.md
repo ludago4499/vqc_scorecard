@@ -142,7 +142,8 @@ two-qubit gates on the circuit tape, so it follows any change to a family's
     python -m vqc_scorecard.tests.test_metrics                  # 125/125
     python -m vqc_scorecard.tests.test_tasks                    # 32/32 (skips without torch / the CSV)
     python -m vqc_scorecard.tests.test_pure                     # 57/57
-    python -m vqc_scorecard.tests                               # all suites, 214/214
+    python -m vqc_scorecard.tests.test_conventions              # 25/25 (paper-to-code conventions)
+    python -m vqc_scorecard.tests                               # all suites, 239/239
 
 The gradient grid is a single metric, `G1`, that measures the variance of a
 cost derivative over random angles at every grid point, for a global and a
@@ -294,7 +295,9 @@ fair-v1 protocol are archived unchanged in `old/fair_v1_archive/`.
 * **A6 IQP (Havlicek et al. 2019).** The second-order ZZ feature map applied
   twice, then local `RY RZ` layers and a CZ chain. Interaction graph: the
   nearest-neighbour chain (the paper runs `n = 2`).
-* **A7 Farhi-Neven (2018).** Wire 0 is a readout qubit in `|1>`; data on wires
+* **A7 Farhi-Neven (2018).** Wire 0 is a readout qubit in `|1>` (the paper's
+  readout is `|0>`; the choice flips the sign of the output exactly, see
+  `docs/IMPLEMENTATION.md` 7.3); data on wires
   `1..n-1`; layers of `exp(i t Z_j X_0)` and `exp(i t X_j X_0)`; a fixed
   `RX(pi/2)` maps the paper's `Y` readout onto `Z_0`, so the package's local
   cost is the paper's readout. **Its DLA is `3(n - 1)`**, a direct sum of
@@ -304,6 +307,20 @@ fair-v1 protocol are archived unchanged in `old/fair_v1_archive/`.
   simulation of small-DLA circuits). Read its trainability together with that.
 
 A1-A6 all close on `su(2**n)` (tested at `n = 2, 3`).
+
+### 7.9 Paper-to-code departures that change numbers
+
+Every family's full paper-to-code map is in `docs/IMPLEMENTATION.md`. Three
+departures matter for reading results:
+
+* **Encoding arm, A2 against A3.** A3 does not use A2's entangler (range-1 ring
+  between layers only, against A2's growing-range ring after every layer). H6a
+  therefore contrasts encoding and entangler together.
+* **A5 at `n = 6`.** The range-3 block has 6 controlled gates where the paper's
+  rule gives 2, so `p` is 111 (paper rule 99) at `d = 3` and 183 (159) at
+  `d = 5`. `n = 4` and `n = 8` match the paper.
+* **A6 input range.** Task angles lie on `[0, pi]`, half the paper's
+  `(0, 2 pi]`; the ZZ phase `(pi - x_q)(pi - x_r)` never changes sign.
 
 ---
 
@@ -367,3 +384,12 @@ encoder feed the family's own encoding; the readout is `sigmoid(a <Z_0> + b)`;
 `tasks/model.py` (`MODELS`, `build_pure_model`), `tasks/pure_report.py`
 (pre-registered hypotheses H1-H8, decision rules in `tasks/stats.py`, result
 categories). The run order is in `RUN_PURE.md` at the repository root.
+
+---
+
+## 11. Reproducing the circuits from the papers
+
+`docs/IMPLEMENTATION.md` maps every equation of every source paper to the gates
+that implement it: sign and order conventions, angle counts, the task path,
+and every deviation with whether it changes a number. Each statement there has
+a numerical check in `tests/test_conventions.py`.

@@ -15,7 +15,9 @@
 #               tiled in a 2x2 grid, each panel annotated with its checkpoint
 #               beta (p=1e-2) and p_crit(d=8). Deck v9 G5 slide drawn from it.
 #   2026-10-01  FAMILIES extended to A1-A7 (pure-v1). Families without G
-#               records are skipped by the readers, as before.
+#               records are skipped by the readers, as before. A7 drawn in
+#               gold (distinct from A4 red); G2 note and G6 legend moved for
+#               seven series.
 
 """Deck charts for the trainability series, from the checkpoint.
 
@@ -50,7 +52,7 @@ CHECKPOINT = HERE.parent / "results" / "scorecard.jsonl"
 
 FAMILIES = ("A1", "A2", "A3", "A4", "A5", "A6", "A7")
 COLOR = {"A1": "#0f172a", "A2": "#0891b2", "A3": "#b45309", "A4": "#b91c1c",
-         "A5": "#7c3aed", "A6": "#15803d", "A7": "#be185d"}
+         "A5": "#7c3aed", "A6": "#15803d", "A7": "#ca8a04"}
 LABEL = {"A1": "A1 HEA", "A2": "A2 SEL", "A3": "A3 re-up", "A4": "A4 DisCoCat",
          "A5": "A5 circ-centric", "A6": "A6 IQP", "A7": "A7 Farhi-Neven"}
 MUTED, GRID, AXIS = "#94a3b8", "#e2e8f0", "#475569"
@@ -144,7 +146,7 @@ def g2_depth(outdir: Path, width: int = 6) -> None:
     ax.set_xlabel("depth  d")
     ax.set_ylabel(f"Var[∂C] global (n={width})")
     ax.set_xticks(sorted(depths))
-    ax.text(0.42, 0.93, "settles by d=3, then flat to d=8 →\nno depth-induced collapse",
+    ax.text(0.30, 0.60, "A1-A6 settle by d=3, then flat to d=8;\nA7 sits ~30x higher at every depth",
             transform=ax.transAxes, color=AXIS, fontsize=13.5)
     ax.legend(loc="lower right", ncol=2)
     fig.tight_layout()
@@ -202,12 +204,12 @@ def g4_locality(outdir: Path, depths: tuple[int, int] = (1, 3)) -> None:
             ax.bar(i + 0.19, gap["alpha_local"], width=0.36, color=COLOR[fam],
                    alpha=0.35)
             ax.text(i, max(gap["alpha_global"], gap["alpha_local"]) + 0.03,
-                    f"gap {gap['gap']:+.2f}", ha="center", fontsize=12.5,
+                    f"{gap['gap']:+.2f}", ha="center", fontsize=11.5,
                     color=AXIS)
         ax.axhline(np.log(2), linestyle="--", linewidth=1.6, color=MUTED)
         ax.axhline(0.0, linewidth=1.2, color=MUTED)
         ax.set_xticks(xs)
-        ax.set_xticklabels([LABEL[f] for f in FAMILIES], fontsize=12.5)
+        ax.set_xticklabels(list(FAMILIES), fontsize=13)
         ax.set_title(f"d = {depth}", fontsize=15, color=AXIS)
         ax.grid(axis="x", visible=False)
     axes[0].set_ylabel("width-decay rate α")
@@ -328,7 +330,7 @@ def g6_scale(outdir: Path, width: int = 8, depth: int = 5) -> None:
     left.set_title("trainability: gradient stays alive", fontsize=15, color=AXIS)
     right.set_ylabel("QFIM rank (capacity)")
     right.set_title("capacity: directions collapse", fontsize=15, color=AXIS)
-    right.legend(loc="lower left", fontsize=12)
+    right.legend(loc="upper right", fontsize=11, ncol=2)
     fig.tight_layout()
     fig.savefig(outdir / "g6_scale.png", transparent=False, facecolor="white")
     plt.close(fig)

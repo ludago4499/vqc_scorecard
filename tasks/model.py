@@ -31,6 +31,10 @@
 #               variants (the A2 ansatz under amplitude and IQP encodings).
 #               TaskModel, the legacy feature route (A1-A4) and the
 #               compositional A4 route are unchanged.
+#   2026-10-08  Documentation only. The MODELS note claimed A3's Euler block
+#               and ring are A2's; the block is, the ring is not (A3: range 1,
+#               between layers only; A2: growing range, after every layer).
+#               Corrected, with the consequence for the encoding arm.
 
 """Quantum models for the task axis.
 
@@ -329,9 +333,15 @@ MODELS: dict[str, ModelSpec] = {s.tag: s for s in (
 """Every model of the pure protocol, by tag.
 
 The encoding arm (Class II) holds the SEL ansatz of A2 fixed and swaps the
-encoding: ``A2`` (angle), ``A3`` (re-upload; its Euler block and ring are A2's,
-see :mod:`~vqc_scorecard.ansatze.a3_reupload`), ``A2:amp`` and ``A2:iqp``. The
-A3 and A2 records serve both arms."""
+encoding: ``A2`` (angle), ``A3`` (re-upload), ``A2:amp`` and ``A2:iqp``. The
+A3 and A2 records serve both arms.
+
+``A2:amp`` and ``A2:iqp`` run the A2 circuit exactly. ``A3`` does not: it shares
+A2's Euler block (``RZ RY RZ``) but entangles with a range-1 CNOT ring placed
+only between layers, where A2 rings after every layer with a range that grows
+with the layer (see :mod:`~vqc_scorecard.ansatze.a2_sel` and
+:mod:`~vqc_scorecard.ansatze.a3_reupload`). The angle against re-upload
+contrast therefore changes the encoding and the entangler together."""
 
 
 def _reupload_body(theta, x, n: int, d: int) -> None:

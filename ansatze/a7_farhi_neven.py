@@ -12,6 +12,12 @@
 #               and a Y measurement of the readout. Replaces the retired A7
 #               (quantum attention), which has classical layers built into its
 #               architecture and is kept in the taxonomy only.
+#   2026-10-08  Documentation only (no gate, order or count changed). Corrected
+#               "readout in |1>, as in the paper": the paper's |z, 1> uses
+#               +1/-1 valued bits, so its readout is the Z = +1 state |0>; the
+#               |1> used here flips the sign of every output exactly. Added the
+#               product-form identity, the basis-encoding limit and the loss.
+#               See docs/IMPLEMENTATION.md, section A7.
 
 """A7 - Farhi-Neven quantum neural network (readout qubit).
 
@@ -34,10 +40,17 @@ wire 0 is the readout, wires ``1 .. n-1`` hold ``n - 1`` data features.
 
 Circuit
 -------
-1. Readout prepared in ``|1>`` (``X`` on wire 0), as in the paper.
+1. Readout prepared in ``|1>`` (``X`` on wire 0). The paper writes
+   ``|z, 1>`` with bits valued ``+1`` or ``-1``, so its readout is the
+   ``Z = +1`` state, ``|0>`` here (its Eqs. 10-11 and 19-20 need
+   ``<Z_readout> = +1``). ``X_0`` commutes with every gate of this circuit, so
+   ``|1>`` flips the sign of the output exactly and nothing else; the head
+   ``a`` absorbs it. Kept as is to leave pure-v1 results unchanged.
 2. Encoding: ``RY(x_j)`` on data wire ``j``. The paper loads binary data as a
    computational basis state; a continuous angle is the declared deviation
    that puts A7 in Class I next to A1, A2 and A4 (same angle features).
+   ``RY(0)|0> = |0>`` and ``RY(pi)|0> = |1>``, so the endpoints of the
+   ``[0, pi]`` feature range are the paper's basis states.
 3. ``d`` layers. One layer: ``exp(i theta Z_j X_0)`` for every data wire ``j``,
    then ``exp(i theta X_j X_0)`` for every data wire: the paper's alternating
    ``ZX`` and ``XX`` sweeps. Queued as ``PauliRot(-2 theta)``, because
@@ -47,7 +60,23 @@ Circuit
    local cost ``<Z_0>`` **is** the paper's readout, for the descriptors and the
    task head alike.
 
-Angle count: ``p = 2 (n - 1) d``.
+Angle count: ``p = 2 (n - 1) d``. At ``n = 17``, ``d = 3`` this is 96, the
+paper's MNIST circuit (16 data qubits, 3 ZX and 3 XX sweeps).
+
+Product form (classically simulable)
+------------------------------------
+Write the readout as ``(|+> - |->) / sqrt(2)`` in the ``X_0`` basis. Each gate
+``exp(i t P_j X_0)`` acts on the data as ``exp(+i t P_j)`` in the ``+`` branch
+and ``exp(-i t P_j)`` in the ``-`` branch, and gates on different data wires act
+on different qubits. With ``u_j^+`` and ``u_j^-`` the products of a wire's gates
+in each branch and ``|phi_j> = RY(x_j)|0>``::
+
+    <Y_0> = Im prod_j <phi_j| (u_j^+)^dagger u_j^- |phi_j>
+
+So the output is the imaginary part of a product of ``n - 1`` single-qubit
+overlaps, computable in ``O(n d)``. This is the circuit-level form of the
+algebra ``(n - 1)`` copies of ``su(2)`` (P4). Checked in
+``tests/test_conventions.py``.
 """
 
 from __future__ import annotations
@@ -156,5 +185,11 @@ A7 = Ansatz(
         "studies several gate orders, of which this alternation is one.",
         "The Y readout is implemented as a fixed RX(pi/2) on the readout followed "
         "by Z_0, an exact basis change.",
+        "Readout prepared in |1>. The paper's |z, 1> (bits valued +1/-1) is the "
+        "Z = +1 state |0>. Exact global sign flip of the output, absorbed by the "
+        "head scale a.",
+        "Training: class-balanced BCE on sigmoid(a <Y_0> + b) with Adam. The "
+        "paper uses loss = 1 - l(z) <Y> (Eq. 6) with the loss-normalised SGD "
+        "step of Eq. (32).",
     ),
 )

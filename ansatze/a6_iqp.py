@@ -12,6 +12,11 @@
 #               entanglers. Replaces the retired A6 (quantum LSTM), which has
 #               classical layers built into its architecture and is kept in
 #               the taxonomy only.
+#   2026-10-08  Documentation only (no gate, order or count changed). Declared
+#               the input range (the task angles lie on [0, pi], half the
+#               paper's (0, 2 pi], so every ZZ phase is non-negative), the
+#               readout and loss, and that the kernel method (QKE) is not
+#               implemented. See docs/IMPLEMENTATION.md, section A6.
 
 """A6 - IQP (ZZ) feature map with a trainable variational circuit.
 
@@ -39,7 +44,26 @@ Circuit
    repeats of [``CZ`` on every chain edge, then a local layer].
 3. ``<Z_0>``.
 
-Angle count: ``p = 2 n (d + 1)``.
+Angle count: ``p = 2 n (d + 1)``, the paper's ``theta in R^{2n(l+1)}`` with
+``l = d``.
+
+Input range
+-----------
+The paper draws ``x`` from ``(0, 2 pi]``. The task features are angles on
+``[0, pi]`` (standardised PCA, clipped at 3 sigma, mapped by
+``(s + 3) / 6 * pi``). So ``phi_q = x_q`` covers half the paper's range, and
+``(pi - x_q)(pi - x_r)`` lies in ``[0, pi^2]``: the ZZ phase never changes
+sign, where the paper's spans ``[-pi^2, pi^2]``. A mean feature maps to
+``pi / 2``.
+
+Readout and decision rule
+-------------------------
+The paper measures a parity ``f`` of all qubits and assigns
+``sign(<f> + b)``; its cost smooths the binomial error with a sigmoid whose
+sharpness is set by the shot count ``R``. The task head
+``sigmoid(a <Z_0> + b)`` keeps the bias ``b`` and learns the sharpness ``a``.
+The paper's second protocol, quantum kernel estimation (fidelity kernel and a
+classical SVM), is not implemented.
 """
 
 from __future__ import annotations
@@ -170,5 +194,13 @@ A6 = Ansatz(
         "exp(+i theta Z/2) differs by the sign of theta, which changes nothing "
         "under uniform sampling or training.",
         "The descriptor sweep holds x fixed (package convention).",
+        "Input range: task angles lie on [0, pi], half the paper's (0, 2 pi]; "
+        "the ZZ phase (pi - x_q)(pi - x_r) is then in [0, pi^2] and never "
+        "changes sign.",
+        "Training: class-balanced BCE on sigmoid(a <Z_0> + b), Adam, exact "
+        "expectations. The paper minimises a sigmoid-smoothed binomial error "
+        "with SPSA on hardware shots, with zero-noise extrapolation.",
+        "Only the variational classifier is implemented; the paper's quantum "
+        "kernel estimation protocol is not.",
     ),
 )

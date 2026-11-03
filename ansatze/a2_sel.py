@@ -1,3 +1,17 @@
+# This code is part of the VQC/VQN architecture scorecard.
+#
+# (C) Copyright L. D. Gonzalez Alcocer, Tecnologico de Monterrey, 2026.
+#
+# Any modification of this file must keep this notice, and must record the
+# change in the module history below.
+#
+# History:
+#   2026-08-11  Moved from the p1_expressibility package, unchanged.
+#   2026-10-08  Documentation only (no gate, order or count changed). Paper-to-
+#               code map, the exact PennyLane equivalence, the entangler
+#               difference with A3, and the full deviations list. See
+#               docs/IMPLEMENTATION.md, section A2.
+
 """A2 - Strongly entangling layers (SEL) with a classical embedding.
 
 Source: M. Schuld et al., *Phys. Rev. A* **101**, 032308 (2020), "Circuit-centric
@@ -11,6 +25,33 @@ Circuit:
    step grows with the layer index.
 
 Angle count: ``p = 3 * n * d``.
+
+Exact equivalence
+-----------------
+``apply(theta, n, d)`` produces the same state as
+``qml.StronglyEntanglingLayers(theta.reshape(d, n, 3), wires=range(n))`` with
+PennyLane's default ranges and ``CNOT`` (checked in
+``tests/test_conventions.py``). Each ``Rot(phi, theta, omega)`` is queued as
+``RZ(phi), RY(theta), RZ(omega)`` in time order. The ring of layer ``l`` is
+``CNOT(q, (q + r_l) mod n)`` for ``q = 0 .. n-1``, with
+``r_l = (l mod (n - 1)) + 1``; a ring follows **every** layer, the last one
+included.
+
+What differs from Schuld et al. 2020
+------------------------------------
+The paper's code block is a layer of general single-qubit gates followed by
+``n / gcd(n, r)`` **trainable** controlled general gates ``C(G)``, control
+``c_j = j r mod n``, target ``t_j = (j - 1) r mod n``, on an **amplitude**
+encoded input. PennyLane's SEL keeps the layer layout and replaces the
+controlled gates by fixed CNOTs with control ``q`` and target ``q + r``. A5
+(:mod:`.a5_circuit_centric`) restores the trainable controlled gates and the
+amplitude encoding.
+
+Not the same entangler as A3
+----------------------------
+A3 (:mod:`.a3_reupload`) uses the same Euler block but a range-1 ring placed
+only **between** layers. So A2 (angle) against A3 (re-upload) changes the
+encoding **and** the entangler. Read the encoding-arm contrast with that.
 
 Why the embedding is fixed
 --------------------------
@@ -98,5 +139,16 @@ A2 = Ansatz(
         "measures the ansatz, not the encoder.",
         "Ring range grows as (layer mod (n-1)) + 1, as in PennyLane "
         "StronglyEntanglingLayers.",
+        "Entanglers are fixed CNOTs (PennyLane SEL). The paper uses trainable "
+        "controlled general gates C(G), n / gcd(n, r) per block, control "
+        "j r mod n and target (j - 1) r mod n.",
+        "Encoding is one RY(x_q) per qubit. The paper amplitude-encodes the "
+        "input (A5 restores that).",
+        "Task path: the task model queues RY(x_q) itself and calls apply with "
+        "x=None; this apply's own x branch is the descriptor path and does not "
+        "broadcast over a batch.",
+        "Readout and loss: the paper uses pi = p(q_0 = 1) + b with a least-"
+        "squares cost and SGD; the task head is sigmoid(a <Z_0> + b) with a "
+        "class-balanced BCE and Adam.",
     ),
 )

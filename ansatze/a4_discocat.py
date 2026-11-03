@@ -1,3 +1,17 @@
+# This code is part of the VQC/VQN architecture scorecard.
+#
+# (C) Copyright L. D. Gonzalez Alcocer, Tecnologico de Monterrey, 2026.
+#
+# Any modification of this file must keep this notice, and must record the
+# change in the module history below.
+#
+# History:
+#   2026-08-11  Moved from the p1_expressibility package, unchanged.
+#   2026-10-08  Documentation only (no gate, order or count changed). Corrected
+#               the word-box deviation (the CRZ ring spans the sentence
+#               register, it is not a per-word lambeq box), added the readout
+#               and task-path notes. See docs/IMPLEMENTATION.md, section A4.
+
 """A4 - DisCoCat sentence circuit.
 
 Source: B. Coecke et al., arXiv:2005.04147 (2020); D. Kartsaklis et al.,
@@ -25,6 +39,32 @@ state is subnormalized. This module queues the **unitary part only**: the
 ``n`` wires. So this measures the expressibility of the sentence state *before*
 contraction. It is an upper bound on the contracted circuit, not the same
 quantity. Do not report it as "DisCoCat expressibility" without this sentence.
+
+What the IQP layer is, and is not
+---------------------------------
+With one qubit per word, the ``CRZ`` ring ``(q, q+1 mod n)`` couples
+**different words** directly. In DisCoCat a word box acts only on its own
+word's wires, and only cups connect words. lambeq's ``IQPAnsatz`` (lambeq
+source, ``lambeq/ansatz/circuit.py``) gives a one-qubit box the Euler sequence
+``Rx, Rz, Rx`` and a multi-qubit box a ``CRz`` ladder on ``n - 1`` adjacent
+pairs (no wrap-around), each followed by a Hadamard layer. So this module is an
+IQP-style **sentence** circuit on a DisCoCat cup template, not lambeq's word
+boxes.
+
+Readout
+-------
+For even ``n`` the cups pair every wire, ``(0, 1), (2, 3), ...``, so no wire is
+left open for the sentence type. The task readout ``<Z_0>`` reads a cup wire
+that a contracted circuit would post-select.
+
+Task path (pure-v1)
+-------------------
+The task model (encoding ``"angle"``) queues ``RY(x_q)`` and then this
+``apply`` with ``x=None``. The first layer here is ``RY(theta_q)`` on the same
+wire, so the two compose to ``RY(x_q + theta_q)``: the word-state angles act as
+trainable offsets on the features. The parse-driven word-table route
+(:func:`vqc_scorecard.tasks.model.build_compositional_model`) is the legacy v10
+task axis and is not part of pure-v1.
 """
 
 from __future__ import annotations
@@ -115,7 +155,13 @@ A4 = Ansatz(
         "upper bound on the contracted sentence circuit.",
         "The parse is a fixed alternating noun-verb template, not a real parser "
         "output. Sentence length maps to n as one qubit per word.",
-        "Word boxes are IQP-style (H layer + CRZ ring), as in the lambeq "
-        "IQPAnsatz, not the paper's abstract word boxes.",
+        "The IQP layer (H layer + CRZ ring with wrap-around) spans the whole "
+        "sentence register and couples different words directly. lambeq's "
+        "IQPAnsatz uses Rx Rz Rx for one-qubit boxes and a CRz ladder of n - 1 "
+        "gates per layer inside a multi-qubit box; it is not reproduced here.",
+        "Every wire is cupped for even n, so no sentence wire stays open; the "
+        "readout <Z_0> reads a cup wire that contraction would post-select.",
+        "Task path: RY(x_q) is queued before the word-state RY(theta_q) on the "
+        "same wire, so the pair is RY(x_q + theta_q).",
     ),
 )
